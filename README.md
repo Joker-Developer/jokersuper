@@ -38,4 +38,4 @@ Open ./data/config.lua and add your ID to the "sudo_users" section in the follow
 Arabic: [@iq_dev8](http://telegram.me/iq_dev8)
 
 
-Speclal thanks For OmarReal
+# Speclal thanks For OmarReal
