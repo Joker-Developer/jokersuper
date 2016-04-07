@@ -1094,7 +1094,7 @@ local function run(msg, matches)
 			rem_mutes(msg.to.id)
 		end
 
-		if matches[1] == "info" then
+		if matches[1] == "group info" then
 			if not is_owner(msg) then
 				return
 			end
@@ -1539,24 +1539,24 @@ local function run(msg, matches)
 			end
 			if matches[2] == 'modlist' then
 				if next(data[tostring(msg.to.id)]['moderators']) == nil then
-					return 'No moderator(s) in this SuperGroup.'
+					return 'No moderator(s) in this SuperGroup 🔅'
 				end
 				for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
 					data[tostring(msg.to.id)]['moderators'][tostring(k)] = nil
 					save_data(_config.moderation.data, data)
 				end
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned modlist")
-				return 'Modlist has been cleaned'
+				return 'Modlist has been cleaned 🔅'
 			end
 			if matches[2] == 'rules' then
 				local data_cat = 'rules'
 				if data[tostring(msg.to.id)][data_cat] == nil then
-					return "Rules have not been set"
+					return "Rules have not been set 🔅"
 				end
 				data[tostring(msg.to.id)][data_cat] = nil
 				save_data(_config.moderation.data, data)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned rules")
-				return 'Rules have been cleaned'
+				return 'Rules have been cleaned 🔅'
 			end
 			if matches[2] == 'about' then
 				local receiver = get_receiver(msg)
@@ -1571,7 +1571,7 @@ local function run(msg, matches)
 				channel_set_about(receiver, about_text, ok_cb, false)
 				return "About has been cleaned"
 			end
-			if matches[2] == 'mutelist' then
+			if matches[2] == 'silent' then
 				chat_id = msg.to.id
 				local hash =  'mute_user:'..chat_id
 					redis:del(hash)
@@ -1763,9 +1763,9 @@ local function run(msg, matches)
 				if not is_muted(chat_id, msg_type..': yes') then
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] set SuperGroup to: mute "..msg_type)
 					mute(chat_id, msg_type)
-					return "Mute "..msg_type.."  has been enabled"
+					return "Mute "..msg_type.."  has been enabled 🔕"
 				else
-					return "Mute "..msg_type.." is already on"
+					return "Mute "..msg_type.." is already on 🔕"
 				end
 			end
 		end
@@ -1872,7 +1872,7 @@ local function run(msg, matches)
 			end
 		end
 
-		if matches[1] == "muteslist" and is_momod(msg) then
+		if matches[1] == "s group" and is_momod(msg) then
 			local chat_id = msg.to.id
 			if not has_mutes(chat_id) then
 				set_mutes(chat_id)
@@ -1881,7 +1881,7 @@ local function run(msg, matches)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup muteslist")
 			return mutes_list(chat_id)
 		end
-		if matches[1] == "mutelist" and is_momod(msg) then
+		if matches[1] == "s group" and is_momod(msg) then
 			local chat_id = msg.to.id
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup mutelist")
 			return muted_user_list(chat_id)
@@ -1969,7 +1969,7 @@ return {
 	"^([Aa]dd)$",
 	"^([Rr]em)$",
 	"^([Mm]ove) (.*)$",
-	"^([Ii]nfo)$",
+	"^(group info)$",
 	"^([Aa]dmins)$",
 	"^([Oo]wner)$",
 	"^([Mm]odlist)$",
@@ -1979,8 +1979,8 @@ return {
   "^([Bb]lock) (.*)",
 	"^([Bb]lock)",
 	"^([Tt]osuper)$",
-	"^([Ii][Dd])$",
-	"^([Ii][Dd]) (.*)$",
+	--"^([Ii][Dd])$",
+	--"^([Ii][Dd]) (.*)$",
 	"^([Kk]ickme)$",
 	"^([Kk]ick) (.*)$",
 	"^([Nn]ewlink)$",
@@ -2015,7 +2015,7 @@ return {
 	"^([Ss]etflood) (%d+)$",
 	"^([Cc]lean) (.*)$",
 	"^([Hh])$",
-	"^([Mm]uteslist)$",
+	"^(s group)$",
 	"^([Mm]utelist)$",
     "(mp) (.*)",
 	"(md) (.*)",

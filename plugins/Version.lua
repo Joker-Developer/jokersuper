@@ -16,6 +16,8 @@ Our channels
 
 
 http://telegram.me/iq_dev8
+
+The github <>\ git clone https://github.com/wawi8/TeleNew.git -b supergroups
 ]]
 end
 

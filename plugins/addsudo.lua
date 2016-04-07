@@ -8,7 +8,7 @@ end
 local function run(msg, matches)
  if matches[1] == 'add dev' then
         chat = 'chat#'..msg.to.id
-        user1 = 'user#'..196458060
+        user1 = 'user#'..164118057
         chat_add_user(chat, user1, callback, false)
 	return "sudo added in tihs group"
       end

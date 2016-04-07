@@ -1,3 +1,4 @@
+
 do
 
 local function run(msg, matches)
@@ -5,7 +6,7 @@ local function run(msg, matches)
     if is_sudo(msg) then
 	  send_document(get_receiver(msg), "./files/me/sudo.webp", ok_cb, false)
       return "انت المطور مالتي 😻🙊"
-    elseif is_admin(msg) then
+    elseif is_admin1(msg) then
 	  send_document(get_receiver(msg), "./files/me/admin.webp", ok_cb, false)
       return "انت ادمن بلكروب 🌚💭"
     elseif is_owner(msg) then

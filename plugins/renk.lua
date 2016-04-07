@@ -140,6 +140,7 @@ local function run(msg, matches)
             local user_name = user.user_name or ""
             local id = user.peer_id  or "" -- This would be funny
             text = text.."First name: "..first_name.."\n"
+              .."Group Name : "..msg.to.title.."\n\n"
               .."Print name: "..print_name.."\n"
               .."User name: "..user_name.."\n"
               .."ID: "..id
